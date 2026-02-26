@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Barber Shop Nacogdoches TX | Johnny's Since 1961</title>
+    <meta name="description" content="Walk-ins welcome at Johnny's Barber Shop in Nacogdoches, TX. Cuts, fades, shaves & designs since 1961. Call 936-564-1778.">
+    <meta name="keywords" content="Barber Shop Nacogdoches TX, Haircut Nacogdoches, Walk-in Barber, Men's Haircut, Fades, Shaves, Johnny's Barber Shop">
+    <meta name="author" content="Johnny's Barber & Styling Shop">
+    <link rel="canonical" href="https://johnnysbarber.com/">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarberShop",
+      "name": "Johnny's Barber & Styling Shop",
+      "description": "Classic barbershop in Nacogdoches TX since 1961. Cuts, fades, shaves, designs & color for men, women & kids.",
+      "url": "https://johnnysbarber.com/",
+      "telephone": "+19365641778",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3019 North St",
+        "addressLocality": "Nacogdoches",
+        "addressRegion": "TX",
+        "postalCode": "75965",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 31.6364,
+        "longitude": -94.6543
+      },
+      "areaServed": "Nacogdoches, TX",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: '#1C0F08',
+                        barberRed: '#B83228',
+                        barberCream: '#F5EFE0',
+                        barberNavy: '#1A3A6B'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #F5EFE0;
+            color: #1C0F08;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .bg-espresso { background-color: #1C0F08; }
+        .text-espresso { color: #1C0F08; }
+        .bg-barberRed { background-color: #B83228; }
+        .text-barberRed { color: #B83228; }
+        .bg-barberCream { background-color: #F5EFE0; }
+        .text-barberCream { color: #F5EFE0; }
+        .bg-barberNavy { background-color: #1A3A6B; }
+
+        /* Barber Pole Stripe Pattern */
+        .barber-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                #F5EFE0,
+                #F5EFE0 15px,
+                #B83228 15px,
+                #B83228 30px,
+                #F5EFE0 30px,
+                #F5EFE0 45px,
+                #1A3A6B 45px,
+                #1A3A6B 60px
+            );
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .glowing-text {
+            text-shadow: 0 0 20px rgba(245, 239, 224, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(28, 15, 8, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 239, 224, 0.1);
+        }
+
+        /* Prevent scroll during preloader */
+        .no-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="no-scroll relative">
+
+    <!-- 1. Cinematic Entrance Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-espresso flex flex-col items-center justify-center overflow-hidden">
+        <canvas id="preloader-canvas" class="absolute inset-0 z-0"></canvas>
+        <div class="relative z-10 flex flex-col items-center justify-center px-4 text-center">
+            <h1 id="preloader-logo" class="font-playfair italic text-5xl md:text-7xl lg:text-8xl text-barberCream glowing-text opacity-0">Johnny's</h1>
+            <p id="preloader-sub" class="mt-6 text-barberCream/80 tracking-[0.2em] uppercase text-xs md:text-sm opacity-0">Barber & Styling Shop · Est. 1961</p>
+        </div>
+    </div>
+
+    <!-- 2. Sticky Header -->
+    <header class="fixed top-0 w-full z-50 bg-espresso/95 backdrop-blur-md border-b border-white/10 transition-transform duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-playfair italic text-2xl text-barberCream relative z-50">Johnny's</a>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-barberCream/80 hover:text-barberCream transition-colors text-sm uppercase tracking-wider">About</a>
+                    <a href="#features" class="text-barberCream/80 hover:text-barberCream transition-colors text-sm uppercase tracking-wider">Why Us</a>
+                    <a href="#reviews" class="text-barberCream/80 hover:text-barberCream transition-colors text-sm uppercase tracking-wider">Reviews</a>
+                    <a href="#contact" class="text-barberCream/80 hover:text-barberCream transition-colors text-sm uppercase tracking-wider">Contact</a>
+                    <a href="tel:19365641778" class="bg-barberRed text-white px-6 py-2.5 rounded hover:bg-red-800 transition-colors font-medium flex items-center gap-2 group">
+                        <i data-lucide="phone" class="w-4 h-4 group-hover:animate-bounce"></i>
+                        Call Now
+                    </a>
+                </nav>
+
+                <!-- Mobile Header Actions -->
+                <div class="md:hidden flex items-center gap-4 relative z-50">
+                    <a href="tel:19365641778" class="bg-barberRed text-white p-2.5 rounded-full hover:bg-red-800 transition-colors shadow-md">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <!-- Fixed Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="text-barberCream hover:text-white focus:outline-none w-10 h-10 relative flex justify-center items-center rounded-full bg-white/5 border border-white/10">
+                        <span id="icon-menu" class="absolute transition-opacity duration-300 opacity-100 flex items-center justify-center">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </span>
+                        <span id="icon-close" class="absolute transition-opacity duration-300 opacity-0 flex items-center justify-center">
+                            <i data-lucide="x" class="w-6 h-6 text-barberRed"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-espresso z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-center items-center h-screen pt-20">
+            <!-- Decorative background fade -->
+            <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+            
+            <nav class="flex flex-col items-center space-y-8 w-full px-8 relative z-10">
+                <a href="#about" class="mobile-link text-barberCream text-3xl font-playfair italic hover:text-barberRed transition-colors">About</a>
+                <a href="#features" class="mobile-link text-barberCream text-3xl font-playfair italic hover:text-barberRed transition-colors">Why Us</a>
+                <a href="#reviews" class="mobile-link text-barberCream text-3xl font-playfair italic hover:text-barberRed transition-colors">Reviews</a>
+                <a href="#contact" class="mobile-link text-barberCream text-3xl font-playfair italic hover:text-barberRed transition-colors">Location</a>
+                
+                <div class="w-full pt-8 space-y-4">
+                    <a href="tel:19365641778" class="w-full flex items-center justify-center bg-barberRed text-white py-4 rounded-lg text-xl font-bold shadow-lg hover:bg-red-800 transition-colors">
+                        Call 936-564-1778
+                    </a>
+                    <a href="https://wa.me/19365641778" class="w-full flex items-center justify-center border border-barberCream/30 text-barberCream py-4 rounded-lg text-lg font-medium hover:bg-white/5 transition-colors gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Us
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 3. Hero Section -->
+        <section class="relative min-h-[90vh] flex items-center bg-barberCream overflow-hidden pt-20" id="hero">
+            <!-- Canvas Background -->
+            <canvas id="hero-canvas" class="absolute inset-0 z-0 opacity-40"></canvas>
+            
+            <!-- Barber Pole Stripe Left Edge -->
+            <div class="absolute left-0 top-0 h-full w-3 md:w-5 barber-stripe z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full py-12 lg:py-0">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Content -->
+                    <div class="lg:col-span-7 flex flex-col justify-center">
+                        <div class="inline-block bg-espresso text-barberCream px-4 py-1.5 text-xs font-bold tracking-widest uppercase mb-6 w-max rounded-sm shadow-md hero-elem">
+                            Barber Shop Nacogdoches TX
+                        </div>
+                        <h1 class="text-5xl sm:text-6xl md:text-7xl font-playfair font-bold text-espresso leading-tight mb-6 hero-elem">
+                            Your Town's Barber <br><span class="italic text-barberRed">Since 1961.</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl leading-relaxed hero-elem">
+                            Walk-ins welcome. No appointment, no hassle — just a clean cut from someone who's been doing this longer than most barbers have been alive.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 hero-elem">
+                            <a href="tel:19365641778" class="bg-barberRed text-white px-8 py-4 rounded font-bold text-lg text-center hover:bg-red-800 transition-all shadow-[0_4px_14px_0_rgba(184,50,40,0.39)] hover:shadow-[0_6px_20px_rgba(184,50,40,0.23)] hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                Call Now — 936-564-1778
+                            </a>
+                            <a href="https://maps.google.com/?q=3019+North+St,+Nacogdoches+TX+75965" target="_blank" rel="noopener" class="bg-transparent border-2 border-espresso text-espresso px-8 py-4 rounded font-bold text-lg text-center hover:bg-espresso hover:text-barberCream transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                Get Directions
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="lg:col-span-5 w-full max-w-md mx-auto lg:ml-auto hero-elem">
+                        <div class="glass-card text-barberCream p-8 rounded-xl shadow-2xl relative overflow-hidden">
+                            <!-- Decorative accent -->
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-barberRed opacity-20 rounded-bl-full"></div>
+                            
+                            <h3 class="font-playfair text-2xl mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                                <i data-lucide="clock" class="text-barberRed"></i>
+                                Shop Info
+                            </h3>
+                            
+                            <ul class="space-y-6">
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-white/5 p-2 rounded shrink-0 text-barberRed">
+                                        <i data-lucide="door-open" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg">Walk-ins Welcome</p>
+                                        <p class="text-sm text-gray-400">No appointment needed. Come on in.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-white/5 p-2 rounded shrink-0 text-barberRed">
+                                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg">Hours</p>
+                                        <p class="text-sm text-gray-400">Tue - Fri: 8:00 AM - 6:00 PM</p>
+                                        <p class="text-sm text-gray-400">Sat: 8:00 AM - 2:00 PM</p>
+                                        <p class="text-sm text-gray-400">Sun & Mon: Closed</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-white/5 p-2 rounded shrink-0 text-barberRed">
+                                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg">Location</p>
+                                        <p class="text-sm text-gray-400">3019 North St<br>Nacogdoches, TX 75965</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Icon Feature Grid (Why Johnny's?) -->
+        <section id="features" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 gs-reveal">
+                    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-espresso mb-4">Why Choose Johnny's?</h2>
+                    <div class="w-20 h-1 bg-barberRed mx-auto mb-6 rounded-full"></div>
+                    <p class="text-lg text-gray-600">Old school values, precise techniques, and an atmosphere you can't fake.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-espresso text-barberCream flex items-center justify-center rounded-lg mb-6">
+                            <i data-lucide="scissors" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">60+ Years of Experience</h3>
+                        <p class="text-gray-600">Cutting hair in Nacogdoches since 1961. We've mastered styles from every era.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-barberRed text-white flex items-center justify-center rounded-lg mb-6">
+                            <i data-lucide="user-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">Walk-Ins Always Welcome</h3>
+                        <p class="text-gray-600">No appointment necessary. Just walk through the door, sit down, and relax.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-barberNavy text-white flex items-center justify-center rounded-lg mb-6">
+                            <i data-lucide="users" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">All Ages, All Styles</h3>
+                        <p class="text-gray-600">Men, women & kids. From classic tapers to modern designs and color.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-espresso text-barberCream flex items-center justify-center rounded-lg mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 22 10-10"/><path d="m14 6 4-4 4 4-4 4-2-2"/><path d="m12 14 4-4"/><path d="M14 12c-2.5 0-4.5 2-4.5 4.5S11.5 21 14 21s4.5-2 4.5-4.5"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">Full Service Shop</h3>
+                        <p class="text-gray-600">Premium cuts, fades, hot lather straight razor shaves, and custom designs.</p>
+                    </div>
+                    <!-- Feature 5 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-barberRed text-white flex items-center justify-center rounded-lg mb-6">
+                            <i data-lucide="banknote" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">Honest Prices</h3>
+                        <p class="text-gray-600">Starting at just $17. No hidden fees, no surprises. Just quality work.</p>
+                    </div>
+                    <!-- Feature 6 -->
+                    <div class="bg-barberCream p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow gs-reveal">
+                        <div class="w-14 h-14 bg-barberNavy text-white flex items-center justify-center rounded-lg mb-6">
+                            <i data-lucide="map-pin" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-espresso mb-3 font-playfair">Right Here in Nacogdoches</h3>
+                        <p class="text-gray-600">Located at 3019 North St. We are proud to be your neighborhood barbershop.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Deep Sales Copy -->
+        <section id="about" class="py-24 bg-espresso text-barberCream relative overflow-hidden">
+            <!-- Decorative background elements -->
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-barberRed opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-barberNavy opacity-10 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10 gs-reveal">
+                <i data-lucide="quote" class="w-12 h-12 text-barberRed mx-auto mb-8 opacity-50"></i>
+                
+                <h2 class="text-3xl md:text-5xl font-playfair font-bold mb-8 leading-tight">
+                    Finding a barber you trust shouldn't be a gamble.
+                </h2>
+                
+                <div class="space-y-6 text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-12 text-left md:text-center">
+                    <p>
+                        We know the frustration. Walking into a chain shop, getting rushed into a chair by someone who doesn't know your hair, and walking out with a cut you have to fix at home in the mirror. You deserve better than a 10-minute rush job.
+                    </p>
+                    <p>
+                        At Johnny's, we believe in doing things the right way. As the premier <strong class="text-white font-semibold">barber shop in Nacogdoches TX</strong>, we've been cutting the same families for generations. When you sit in our chair, you aren't just a number. You get real barbers, real conversations, and a classic shop feel that never goes out of style.
+                    </p>
+                    <p>
+                        Whether you need a sharp fade for the weekend, a hot towel shave, or just a tidy up, we've got you covered.
+                    </p>
+                </div>
+
+                <a href="tel:19365641778" class="inline-flex items-center gap-2 text-barberRed font-bold text-xl hover:text-white transition-colors group">
+                    <span class="border-b-2 border-barberRed group-hover:border-white transition-colors pb-1">Give us a call before you come in</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 6. Trust & Proof -->
+        <section id="reviews" class="py-24 bg-barberCream border-y border-gray-300">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="gs-reveal">
+                        <div class="bg-white p-10 md:p-12 rounded-2xl shadow-xl relative">
+                            <!-- Yelp Badge styling -->
+                            <div class="absolute -top-6 -right-6 bg-red-600 text-white font-bold px-4 py-2 rounded shadow-lg transform rotate-3 flex items-center gap-1">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
+                                <span class="ml-1">4.5 Yelp</span>
+                            </div>
+
+                            <div class="flex items-center gap-1 mb-6 text-[#FFD700]">
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            </div>
+                            
+                            <blockquote class="text-xl md:text-2xl font-playfair italic text-espresso mb-8 leading-relaxed">
+                                "Best haircut in Nacogdoches, hands down. Classic barbershop feel, great conversations, and a fade that was absolutely perfect. Johnny's is the only place I'll go from now on."
+                            </blockquote>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-espresso rounded-full flex items-center justify-center text-barberCream font-bold text-xl">
+                                    C
+                                </div>
+                                <div>
+                                    <p class="font-bold text-espresso">Connor M.</p>
+                                    <p class="text-sm text-gray-500">Local Guide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 gs-reveal">
+                        <h2 class="text-4xl md:text-5xl font-playfair font-bold text-espresso">The Standard in Nacogdoches.</h2>
+                        <p class="text-lg text-gray-700">Since 1961, our chairs have held mayors, high school football stars, grandfathers, and toddlers getting their very first cut. We build community one haircut at a time.</p>
+                        
+                        <div class="grid grid-cols-2 gap-6 pt-4">
+                            <div class="border-l-4 border-barberRed pl-4">
+                                <p class="text-3xl font-bold text-espresso mb-1">1961</p>
+                                <p class="text-sm font-medium text-gray-500 uppercase">Year Established</p>
+                            </div>
+                            <div class="border-l-4 border-barberNavy pl-4">
+                                <p class="text-3xl font-bold text-espresso mb-1">100%</p>
+                                <p class="text-sm font-medium text-gray-500 uppercase">Walk-ins Accepted</p>
+                            </div>
+                            <div class="border-l-4 border-espresso pl-4">
+                                <p class="text-3xl font-bold text-espresso mb-1">All</p>
+                                <p class="text-sm font-medium text-gray-500 uppercase">Ages & Styles</p>
+                            </div>
+                            <div class="border-l-4 border-barberRed pl-4">
+                                <p class="text-3xl font-bold text-espresso mb-1">4.5★</p>
+                                <p class="text-sm font-medium text-gray-500 uppercase">Local Ratings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Hard Close -->
+        <section class="py-24 bg-barberRed text-white text-center px-4 relative overflow-hidden">
+            <!-- Abstract background shape -->
+            <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px);"></div>
+            
+            <div class="max-w-3xl mx-auto relative z-10 gs-reveal">
+                <h2 class="text-5xl md:text-7xl font-playfair font-bold mb-6">Ready for a Fresh Cut?</h2>
+                <p class="text-xl md:text-2xl font-light mb-12">Walk right in, or give us a quick call to check the wait time.</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
+                    <a href="tel:19365641778" class="w-full sm:w-auto bg-espresso text-barberCream px-10 py-5 rounded font-bold text-xl hover:bg-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                        Call Now
+                    </a>
+                    <a href="https://maps.google.com/?q=3019+North+St,+Nacogdoches+TX+75965" target="_blank" rel="noopener" class="w-full sm:w-auto bg-white text-barberRed px-10 py-5 rounded font-bold text-xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3">
+                        <i data-lucide="map" class="w-6 h-6"></i>
+                        Get Directions
+                    </a>
+                </div>
+                
+                <p class="text-4xl md:text-6xl font-black tracking-tight drop-shadow-lg">936-564-1778</p>
+            </div>
+        </section>
+
+        <!-- 8. Location & Map Section -->
+        <section id="contact" class="py-24 bg-espresso relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Contact Information -->
+                    <div class="lg:col-span-5 text-barberCream gs-reveal">
+                        <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-6">Come On In</h2>
+                        <p class="text-gray-400 mb-10 text-lg">We're located right in the heart of Nacogdoches. Walk right in, or give us a call if you have any questions before heading over.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-barberRed shrink-0 mt-1">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xl mb-1">Address</p>
+                                    <p class="text-gray-400">3019 North St<br>Nacogdoches, TX 75965</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-barberRed shrink-0 mt-1">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xl mb-1">Phone</p>
+                                    <a href="tel:19365641778" class="text-gray-400 hover:text-white transition-colors block text-lg">936-564-1778</a>
+                                    <a href="https://wa.me/19365641778" class="text-barberRed hover:text-white transition-colors mt-2 inline-flex items-center gap-2 text-sm font-medium">
+                                        <i data-lucide="message-circle" class="w-4 h-4"></i> Message on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-barberRed shrink-0 mt-1">
+                                    <i data-lucide="clock"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xl mb-1">Hours</p>
+                                    <div class="text-gray-400 space-y-1">
+                                        <p class="flex justify-between w-48"><span>Tue - Fri:</span> <span>8:00 AM - 6:00 PM</span></p>
+                                        <p class="flex justify-between w-48"><span>Saturday:</span> <span>8:00 AM - 2:00 PM</span></p>
+                                        <p class="flex justify-between w-48 text-gray-500"><span>Sun & Mon:</span> <span>Closed</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map Embed -->
+                    <div class="lg:col-span-7 gs-reveal">
+                        <div class="w-full h-[450px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative bg-espresso group">
+                            <!-- Preloader text behind iframe -->
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-500 z-0">
+                                <i data-lucide="loader-2" class="w-8 h-8 animate-spin"></i>
+                            </div>
+                            <iframe 
+                                class="w-full h-full relative z-10"
+                                frameborder="0" 
+                                scrolling="no" 
+                                marginheight="0" 
+                                marginwidth="0" 
+                                src="https://maps.google.com/maps?q=3019+North+St,+Nacogdoches+TX+75965&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                title="Google Maps Location for Johnny's Barber Shop">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9. Footer -->
+    <footer class="bg-espresso text-center py-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-playfair italic text-3xl text-barberCream mb-4">Johnny's</h2>
+            <p class="text-gray-400 mb-6 font-medium">Serving Nacogdoches since 1961.</p>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="tel:19365641778" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">Phone</span>
+                    <i data-lucide="phone" class="w-6 h-6"></i>
+                </a>
+                <a href="https://maps.google.com/?q=3019+North+St,+Nacogdoches+TX+75965" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">Directions</span>
+                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://wa.me/19365641778" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">WhatsApp</span>
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </a>
+            </div>
+            
+            <p class="text-gray-600 text-sm">
+                &copy; <span id="year"></span> Johnny's Barber & Styling Shop. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Update Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                // Open Menu
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+                
+                // Toggle Button Icons
+                iconMenu.classList.replace('opacity-100', 'opacity-0');
+                iconClose.classList.replace('opacity-0', 'opacity-100');
+            } else {
+                // Close Menu
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+                
+                // Toggle Button Icons
+                iconMenu.classList.replace('opacity-0', 'opacity-100');
+                iconClose.classList.replace('opacity-100', 'opacity-0');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu); // Auto close when clicking a link
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        /* =========================================
+           Custom Particle Engine (Barber Confetti)
+           ========================================= */
+        class ParticleEngine {
+            constructor(canvasId, density = 50, isPreloader = false) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.density = density;
+                this.isPreloader = isPreloader;
+                this.colors = ['#B83228', '#F5EFE0', '#1A3A6B']; // Red, White, Navy
+                
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                
+                this.init();
+                this.animate();
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = this.isPreloader ? window.innerHeight : this.canvas.parentElement.offsetHeight;
+            }
+
+            init() {
+                this.particles = [];
+                for (let i = 0; i < this.density; i++) {
+                    this.particles.push(this.createParticle(true));
+                }
+            }
+
+            createParticle(randomY = false) {
+                return {
+                    x: Math.random() * this.canvas.width,
+                    y: randomY ? Math.random() * this.canvas.height : -20,
+                    width: Math.random() * 6 + 4, // 4 to 10px wide
+                    height: Math.random() * 15 + 10, // 10 to 25px tall
+                    color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                    speedY: Math.random() * 1.5 + 0.5,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.05,
+                    opacity: Math.random() * 0.5 + 0.2
+                };
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                for (let i = 0; i < this.particles.length; i++) {
+                    let p = this.particles[i];
+                    
+                    p.y += p.speedY;
+                    p.rotation += p.rotationSpeed;
+                    
+                    if (p.y > this.canvas.height + 50) {
+                        this.particles[i] = this.createParticle();
+                    }
+                    
+                    this.ctx.save();
+                    this.ctx.globalAlpha = p.opacity;
+                    this.ctx.translate(p.x, p.y);
+                    this.ctx.rotate(p.rotation);
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.fillRect(-p.width/2, -p.height/2, p.width, p.height);
+                    this.ctx.restore();
+                }
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize Particles
+        const preloaderParticles = new ParticleEngine('preloader-canvas', 70, true);
+        const heroParticles = new ParticleEngine('hero-canvas', 40, false);
+
+        /* =========================================
+           GSAP Animations & Cinematic Entrance
+           ========================================= */
+        gsap.registerPlugin(ScrollTrigger);
+
+        window.addEventListener("load", () => {
+            // Cinematic Entrance Sequence
+            const tl = gsap.timeline();
+            
+            tl.to("#preloader-logo", { opacity: 1, y: -10, duration: 1.2, ease: "power2.out" })
+              .to("#preloader-sub", { opacity: 1, y: -10, duration: 1, ease: "power2.out" }, "-=0.6")
+              .to("#preloader", { 
+                  yPercent: -100, 
+                  duration: 1.2, 
+                  ease: "power4.inOut", 
+                  delay: 1.5,
+                  onComplete: () => {
+                      document.body.classList.remove('no-scroll');
+                      document.getElementById('preloader').style.display = 'none';
+                  }
+              })
+              // Hero element staggered entrance
+              .from(".hero-elem", {
+                  y: 40,
+                  opacity: 0,
+                  stagger: 0.1,
+                  duration: 1,
+                  ease: "power3.out"
+              }, "-=0.6");
+
+            // Scroll Reveal Animations for sections
+            const revealElements = document.querySelectorAll('.gs-reveal');
+            
+            revealElements.forEach((elem) => {
+                gsap.fromTo(elem, 
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>
+
+
